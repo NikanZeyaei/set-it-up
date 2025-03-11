@@ -82,8 +82,6 @@ install_telegram() {
             
             echo "Removing downloaded archive..."
             rm "$tar_file"
-            
-            echo "Telegram installed successfully! You can run it by typing 'telegram' in your terminal."
         else
             echo "Failed to extract Telegram."
             return 1
