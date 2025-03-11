@@ -57,6 +57,11 @@ create_symlinks() {
     ln -sf "$DOTFILES_DIR/.config/tmux" "$HOME/.config/tmux"
     ln -sf "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
     ln -sf "$DOTFILES_DIR/.config/kitty" "$HOME/.config/kitty"
+
+    mkdir -p "$HOME/Pictures/wallpapers"
+
+    ln -sf "$DOTFILES_DIR/wallpapers" "$HOME/Pictures/wallpapers"
+
     echo "Symlinks created successfully!"
 }
 
