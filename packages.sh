@@ -9,12 +9,19 @@ install_yay() {
 
 install_packages() {
     echo "Installing applications..."
-    yay -S --needed \
-        mpv \
-        obs-studio \
-        flameshot \
-        neovim \
-        kitty \
-        ripgrep \
-        zen-browser-bin # Maybe this will finally replace firefox?
+    
+    packages=(
+        mpv
+        obs-studio
+        flameshot
+        neovim
+        kitty
+        ripgrep
+        arandr
+        zen-browser-bin # Will this finally replace firefox?
+    )
+    
+    yay -S --needed "${packages[@]}"
+    
+    echo "Applications installed successfully!"
 }
