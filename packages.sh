@@ -43,7 +43,6 @@ __install_apps() {
     )
     
     utilities=(
-        arandr
         flameshot
         expressvpn
     )
@@ -51,6 +50,7 @@ __install_apps() {
     display=(
         optimus-manager
         optimus-manager-qt
+        arandr
     )
 
     comms=(
@@ -113,14 +113,13 @@ __install_neovim() {
     local build_dir="$HOME/neovim-build"
     local install_dir="/usr/local"
 
-    # Clone Neovim repository
     echo "Cloning Neovim repository..."
     if ! git clone https://github.com/neovim/neovim "$build_dir"; then
         echo "Failed to clone Neovim repository."
         return 1
     fi
 
-    cd "$build_dir" || { echo "Failed to enter build directory."; return 1; }
+    cd "$build_dir" || { echo "Failed to enter build directory."; 
 
     # # Checkout stable release (optional)
     # echo "Checking out stable release..."
