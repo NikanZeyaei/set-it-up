@@ -69,15 +69,3 @@ setup_dotfiles() {
     setup_tpm
     echo "Dotfiles setup complete!"
 }
-
-# If the script is being run directly (not sourced), execute the full setup
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    setup_dotfiles
-else
-    # If the script is being sourced, just make the functions available
-    echo "Dotfiles functions loaded. Available functions:"
-    echo "- clone_dotfiles: Clone or update the dotfiles repository"
-    echo "- create_directories: Create necessary config directories"
-    echo "- create_symlinks: Create symlinks to dotfiles"
-    echo "- setup_dotfiles: Run the complete setup process"
-fi
