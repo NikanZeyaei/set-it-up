@@ -5,12 +5,6 @@ DOTFILES_DIR="$HOME/.dotfiles"
 SCRIPTS_SRC="$DOTFILES_DIR/scripts"
 SCRIPTS_DEST="$HOME/.local/bin"
 
-setup_tpm() {
-    echo "Setting up Tmux Plugin Manager (TPM)"
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo "Finished Setting up TPM"
-}
-
 clone_dotfiles() {
     echo "Setting up dotfiles repository..."
     if [ ! -d "$DOTFILES_DIR" ]; then
@@ -64,6 +58,13 @@ create_symlinks() {
 
     echo "Symlinks created successfully!"
 }
+
+setup_tpm() {
+    echo "Setting up Tmux Plugin Manager (TPM)"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "Finished Setting up TPM"
+}
+
 
 setup_dotfiles() {
     echo "Starting dotfiles setup..."

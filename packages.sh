@@ -38,12 +38,17 @@ install_packages() {
         optimus-manager-qt
     )
 
+    comms=(
+        slack-desktop
+    )
+
     all_packages=(
         "${base_packages[@]}"
         "${media_packages[@]}"
         "${browsers[@]}"
         "${utilities[@]}"
         "${display[@]}"
+        "${comms[@]}"
     )
     
     yay -S --needed "${all_packages[@]}"
