@@ -10,18 +10,43 @@ install_yay() {
 install_packages() {
     echo "Installing applications..."
     
-    packages=(
-        mpv
-        obs-studio
-        flameshot
+    base_packages=(
         neovim
         kitty
         ripgrep
-        arandr
-        zen-browser-bin # Will this finally replace firefox?
     )
     
-    yay -S --needed "${packages[@]}"
+    media_packages=(
+        mpv
+        obs-studio
+        handbrake
+    )
+    
+    browsers=(
+        zen-browser-bin # Will this finally replace Firefox?
+        brave-bin
+    )
+    
+    utilities=(
+        arandr
+        flameshot
+        expressvpn
+    )
+
+    display=(
+        optimus-manager
+        optimus-manager-qt
+    )
+
+    all_packages=(
+        "${base_packages[@]}"
+        "${media_packages[@]}"
+        "${browsers[@]}"
+        "${utilities[@]}"
+        "${display[@]}"
+    )
+    
+    yay -S --needed "${all_packages[@]}"
     
     echo "Applications installed successfully!"
 }
