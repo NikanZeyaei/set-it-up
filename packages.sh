@@ -2,9 +2,9 @@
 
 install_packages() {
     __install_yay
+    __install_apps
     __install_telegram
     __install_neovim
-    __install_apps
     __setup_spicetify
 }
 
