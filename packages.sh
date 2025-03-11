@@ -1,13 +1,19 @@
 #!/bin/bash
 
-install_yay() {
+install_packages() {
+    __install_yay
+    __install_apps
+    __install_telegram
+}
+
+__install_yay() {
     if ! command -v yay &> /dev/null; then
         echo "Installing yay..."
         sudo pacman -S --needed yay
     fi
 }
 
-install_apps() {
+__install_apps() {
     echo "Installing applications..."
     
     base_packages=(
@@ -58,7 +64,7 @@ install_apps() {
 }
 
 # TODO: Doesn't work properly.
-install_telegram() {
+__install_telegram() {
     echo "Installing Telegram..."
     
     local download_dir="$HOME/Downloads"
@@ -93,8 +99,4 @@ install_telegram() {
     fi
 }
 
-install_packages() {
-    install_yay
-    install_apps
-    install_telegram
-}
+install_packages

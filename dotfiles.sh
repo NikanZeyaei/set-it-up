@@ -5,7 +5,17 @@ DOTFILES_DIR="$HOME/.dotfiles"
 SCRIPTS_SRC="$DOTFILES_DIR/scripts"
 SCRIPTS_DEST="$HOME/.local/bin"
 
-clone_dotfiles() {
+setup_dotfiles() {
+    echo "Starting dotfiles setup..."
+    __clone_dotfiles
+    __create_directories
+    __create_symlinks
+    __setup_scripts
+    __setup_tpm
+    echo "Dotfiles setup complete!"
+}
+
+__clone_dotfiles() {
     echo "Setting up dotfiles repository..."
     if [ ! -d "$DOTFILES_DIR" ]; then
         git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
@@ -18,14 +28,14 @@ clone_dotfiles() {
     echo "Repository setup complete!"
 }
 
-create_directories() {
+__create_directories() {
     echo "Creating necessary directories..."
     mkdir -p "$HOME/.config"
     mkdir -p "$SCRIPTS_DEST"
     echo "Directories created successfully!"
 }
 
-setup_scripts() {
+__setup_scripts() {
     echo "Setting up scripts..."
     if [ -d "$SCRIPTS_SRC" ]; then
         mkdir -p "$SCRIPTS_DEST"
@@ -44,7 +54,7 @@ setup_scripts() {
     fi
 }
 
-create_symlinks() {
+__create_symlinks() {
     echo "Creating symlinks..."
     ln -sf "$DOTFILES_DIR/i3" "$HOME/.config/i3"
     ln -sf "$DOTFILES_DIR/i3status" "$HOME/.config/i3status"
@@ -60,19 +70,8 @@ create_symlinks() {
     echo "Symlinks created successfully!"
 }
 
-setup_tpm() {
+__setup_tpm() {
     echo "Setting up Tmux Plugin Manager (TPM)"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     echo "Finished Setting up TPM"
-}
-
-
-setup_dotfiles() {
-    echo "Starting dotfiles setup..."
-    clone_dotfiles
-    create_directories
-    create_symlinks
-    setup_scripts
-    setup_tpm
-    echo "Dotfiles setup complete!"
 }
