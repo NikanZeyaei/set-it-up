@@ -3,6 +3,7 @@
 install_packages() {
     __install_yay
     __install_telegram
+    __install_neovim
     __install_apps
     __setup_spicetify
 }
@@ -19,9 +20,13 @@ __install_apps() {
     
     base_packages=(
         neovim
-        kitty
+        ghostty
         ripgrep
         docker
+        base-devel
+        cmake
+        ninja
+        curl
     )
     
     media_packages=(
@@ -100,6 +105,44 @@ __install_telegram() {
         echo "Failed to download Telegram."
         return 1
     fi
+}
+
+__install_neovim() {
+    echo "Installing Neovim from source..."
+
+    local build_dir="$HOME/neovim-build"
+    local install_dir="/usr/local"
+
+    # Clone Neovim repository
+    echo "Cloning Neovim repository..."
+    if ! git clone https://github.com/neovim/neovim "$build_dir"; then
+        echo "Failed to clone Neovim repository."
+        return 1
+    fi
+
+    cd "$build_dir" || { echo "Failed to enter build directory."; return 1; }
+
+    # # Checkout stable release (optional)
+    # echo "Checking out stable release..."
+    # git checkout stable
+
+    echo "Building Neovim..."
+    if ! make CMAKE_BUILD_TYPE=RelWithDebInfo; then
+        echo "Failed to build Neovim."
+        return 1
+    fi
+
+    echo "Installing Neovim..."
+    if ! sudo make install; then
+        echo "Failed to install Neovim."
+        return 1
+    fi
+
+    echo "Cleaning up build directory..."
+    cd "$HOME" || return 1
+    rm -rf "$build_dir"
+
+    echo "Neovim installed successfully!"
 }
 
 __setup_spicetify() {

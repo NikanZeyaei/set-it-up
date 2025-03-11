@@ -60,7 +60,7 @@ __create_symlinks() {
     ln -sf "$DOTFILES_DIR/i3status" "$HOME/.config/i3status"
     ln -sf "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
     ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
-    ln -sf "$DOTFILES_DIR/kitty" "$HOME/.config/kitty"
+    ln -sf "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty"
     ln -sf "$DOTFILES_DIR/xfce4" "$HOME/.config/xfce4"
 
     mkdir -p "$HOME/Pictures/wallpapers"
