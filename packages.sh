@@ -15,5 +15,6 @@ install_packages() {
         flameshot \
         neovim \
         kitty \
+        ripgrep \
         zen-browser-bin # Maybe this will finally replace firefox?
 }
