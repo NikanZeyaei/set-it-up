@@ -46,11 +46,12 @@ setup_scripts() {
 
 create_symlinks() {
     echo "Creating symlinks..."
-    ln -sf "$DOTFILES_DIR/.config/i3" "$HOME/.config/i3"
-    ln -sf "$DOTFILES_DIR/.config/i3status" "$HOME/.config/i3status"
-    ln -sf "$DOTFILES_DIR/.config/tmux" "$HOME/.config/tmux"
-    ln -sf "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
-    ln -sf "$DOTFILES_DIR/.config/kitty" "$HOME/.config/kitty"
+    ln -sf "$DOTFILES_DIR/i3" "$HOME/.config/i3"
+    ln -sf "$DOTFILES_DIR/i3status" "$HOME/.config/i3status"
+    ln -sf "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
+    ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+    ln -sf "$DOTFILES_DIR/kitty" "$HOME/.config/kitty"
+    ln -sf "$DOTFILES_DIR/xfce4" "$HOME/.config/xfce4"
 
     mkdir -p "$HOME/Pictures/wallpapers"
 
