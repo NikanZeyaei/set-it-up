@@ -14,6 +14,7 @@ install_apps() {
         neovim
         kitty
         ripgrep
+        docker
     )
     
     media_packages=(
