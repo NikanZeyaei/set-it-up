@@ -98,5 +98,3 @@ install_packages() {
     install_apps
     install_telegram
 }
-
-install_telegram
