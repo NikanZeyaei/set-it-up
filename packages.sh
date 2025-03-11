@@ -2,8 +2,9 @@
 
 install_packages() {
     __install_yay
-    __install_apps
     __install_telegram
+    __install_apps
+    __setup_spicetify
 }
 
 __install_yay() {
@@ -27,6 +28,8 @@ __install_apps() {
         mpv
         obs-studio
         handbrake
+        spotify
+        spicetify-cli
     )
     
     browsers=(
@@ -99,4 +102,7 @@ __install_telegram() {
     fi
 }
 
-install_packages
+__setup_spicetify() {
+    sudo chmod a+wr /opt/spotify
+    sudo chmod a+wr /opt/spotify/Apps -R
+}
