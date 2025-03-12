@@ -64,6 +64,7 @@ __create_symlinks() {
     ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
     ln -sf "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty"
     ln -sf "$DOTFILES_DIR/xfce4" "$HOME/.config/xfce4"
+    ln -sf "$DOTFILES_DIR/betterlockscreen" "$HOME/.config/xfce4"
 
     mkdir -p "$HOME/Pictures/wallpapers"
 

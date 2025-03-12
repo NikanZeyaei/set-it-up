@@ -19,5 +19,3 @@ __setup_user_group() {
     sudo usermod -aG docker $USER
     log "Finished Setting up docker user group (you may need to logout once)"
 }
-
-setup_docker
