@@ -79,7 +79,14 @@ __install_telegram() {
     fi
 }
 
-# Install Neovim from source
+__install_volta() {
+    log "Installing Volta ..."
+
+    curl https://get.volta.sh | bash
+
+    log "Volta installed successfully!"
+}
+
 __install_neovim() {
     log "Installing Neovim from source..."
 
