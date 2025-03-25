@@ -27,7 +27,7 @@ __install_yay() {
 }
 
 __install_apps() {
-    local base_packages=(neovim ghostty ripgrep docker base-devel cmake ninja curl)
+    local base_packages=(neovim ghostty ripgrep docker base-devel cmake ninja curl stow)
     local media_packages=(mpv obs-studio handbrake spotify spicetify-cli)
     local browsers=(zen-browser-bin brave-bin)
     local utilities=(flameshot expressvpn)
