@@ -4,14 +4,14 @@ source ./utils/log.sh
 
 DOTFILES_REPO="https://github.com/nikanzeyaei/dotfiles.git"
 DOTFILES_DIR="$HOME/.dotfiles"
-SCRIPTS_SRC="$DOTFILES_DIR/scripts"
+SCRIPTS_SRC="$DOTFILES_DIR/.config/scripts"
 SCRIPTS_DEST="$HOME/.local/bin"
 
 setup_dotfiles() {
     log "Starting dotfiles setup..."
     __clone_dotfiles
     __create_directories
-    __create_symlinks
+    __apply_stow
     __setup_scripts
     __setup_tpm
     log "Dotfiles setup complete!"
@@ -34,7 +34,15 @@ __create_directories() {
     log "Creating necessary directories..."
     mkdir -p "$HOME/.config"
     mkdir -p "$SCRIPTS_DEST"
+    mkdir -p "$HOME/Pictures/wallpapers"
     log "Directories created successfully!"
+}
+
+__apply_stow() {
+    log "Applying dotfiles with Stow..."
+    cd "$DOTFILES_DIR" || exit
+    stow --target=$HOME .
+    log "Dotfiles successfully stowed!"
 }
 
 __setup_scripts() {
@@ -45,7 +53,7 @@ __setup_scripts() {
         for script in "$SCRIPTS_SRC"/*; do
             if [ -f "$script" ]; then
                 script_name=$(basename "$script")
-                cp -f "$script" "$SCRIPTS_DEST/$script_name"
+                ln -sf "$script" "$SCRIPTS_DEST/$script_name"
                 chmod +x "$SCRIPTS_DEST/$script_name"
                 log "Installed script: $script_name"
             fi
@@ -56,25 +64,12 @@ __setup_scripts() {
     fi
 }
 
-__create_symlinks() {
-    log "Creating symlinks..."
-    ln -sf "$DOTFILES_DIR/i3" "$HOME/.config/i3"
-    ln -sf "$DOTFILES_DIR/i3status" "$HOME/.config/i3status"
-    ln -sf "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
-    ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
-    ln -sf "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty"
-    ln -sf "$DOTFILES_DIR/xfce4" "$HOME/.config/xfce4"
-    ln -sf "$DOTFILES_DIR/betterlockscreen" "$HOME/.config/xfce4"
-
-    mkdir -p "$HOME/Pictures/wallpapers"
-
-    ln -sf "$DOTFILES_DIR/wallpapers" "$HOME/Pictures/wallpapers"
-
-    log "Symlinks created successfully!"
-}
-
 __setup_tpm() {
     log "Setting up Tmux Plugin Manager (TPM)"
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    else
+        log "TPM is already installed, skipping..."
+    fi
     log "Finished Setting up TPM"
 }
