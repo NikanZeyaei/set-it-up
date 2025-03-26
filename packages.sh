@@ -31,7 +31,7 @@ __install_apps() {
     local base_packages=(neovim ghostty ripgrep docker base-devel cmake ninja curl stow tmux)
     local media_packages=(mpv obs-studio handbrake spotify spicetify-cli)
     local browsers=(zen-browser-bin brave-bin)
-    local utilities=(flameshot expressvpn xsel picom noisetorch)
+    local utilities=(flameshot expressvpn xsel picom noisetorch blueman)
     local display=(optimus-manager optimus-manager-qt arandr)
     local comms=(slack-desktop)
     local programming_languages=(go)
