@@ -13,6 +13,7 @@ install_packages() {
     __install_yay || return 1
     __install_apps || return 1
     __install_telegram || return 1
+    __install_volta || return 1
     __install_neovim || return 1
     __setup_spicetify || return 1
 
