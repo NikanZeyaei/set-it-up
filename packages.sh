@@ -28,7 +28,7 @@ __install_yay() {
 }
 
 __install_apps() {
-    local base_packages=(neovim ghostty ripgrep docker docker-compose base-devel cmake ninja curl stow tmux)
+    local base_packages=(ghostty ripgrep docker docker-compose base-devel cmake ninja curl stow tmux)
     local media_packages=(mpv obs-studio handbrake spotify spicetify-cli)
     local browsers=(zen-browser-bin brave-bin)
     local utilities=(flameshot expressvpn xsel picom noisetorch blueman brightnessctl greenclip betterlockscreen)
