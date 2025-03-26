@@ -28,10 +28,32 @@ __install_yay() {
 }
 
 __install_apps() {
-    local base_packages=(ghostty ripgrep docker docker-compose base-devel cmake ninja curl stow tmux)
+    local base_packages=(
+        ghostty 
+        ripgrep 
+        docker 
+        docker-compose 
+        base-devel 
+        cmake 
+        ninja 
+        curl 
+        stow 
+        tmux
+    )
     local media_packages=(mpv obs-studio handbrake spotify spicetify-cli)
     local browsers=(zen-browser-bin brave-bin)
-    local utilities=(flameshot expressvpn xsel picom noisetorch blueman brightnessctl greenclip betterlockscreen)
+    local utilities=(
+        flameshot 
+        expressvpn 
+        xsel 
+        picom 
+        noisetorch 
+        blueman 
+        brightnessctl 
+        # greenclip 
+        betterlockscreen
+        btop
+    )
     local display=(optimus-manager optimus-manager-qt arandr)
     local comms=(slack-desktop)
     local programming_languages=(go)
@@ -113,9 +135,9 @@ __install_neovim() {
         return 1
     fi
 
-    log "Cleaning up build directory..."
-    cd "$HOME" || return 1
-    rm -rf "$NEOVIM_BUILD_DIR"
+    # log "Cleaning up build directory..."
+    # cd "$HOME" || return 1
+    # rm -rf "$NEOVIM_BUILD_DIR"
 
     log "Neovim installed successfully!"
 }
