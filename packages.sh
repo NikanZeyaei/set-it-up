@@ -34,6 +34,7 @@ __install_apps() {
     local utilities=(flameshot expressvpn xsel)
     local display=(optimus-manager optimus-manager-qt arandr)
     local comms=(slack-desktop)
+    local programming_languages=(go)
 
     local all_packages=(
         "${base_packages[@]}"
@@ -42,6 +43,7 @@ __install_apps() {
         "${utilities[@]}"
         "${display[@]}"
         "${comms[@]}"
+        "${programming_languages[@]}"
     )
 
     log "Installing applications..."
