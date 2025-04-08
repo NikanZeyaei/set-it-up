@@ -50,9 +50,11 @@ __install_apps() {
         noisetorch 
         blueman 
         brightnessctl 
-        # greenclip 
+        greenclip 
         betterlockscreen
         btop
+        ngrok
+        gimp
     )
     local display=(optimus-manager optimus-manager-qt arandr)
     local comms=(slack-desktop)
